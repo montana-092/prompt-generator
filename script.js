@@ -19,11 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Enable click-only multi-select behavior for instrument list
   const instrumentSelect = document.getElementById("instrument");
-  instrumentSelect.addEventListener("mousedown", (e) => {
+  const toggleSelect = (e) => {
     e.preventDefault();
     const option = e.target;
-    option.selected = !option.selected;
-  });
+    if (option.tagName === "OPTION") {
+      option.selected = !option.selected;
+    }
+  };
+  instrumentSelect.addEventListener("mousedown", toggleSelect);
+  instrumentSelect.addEventListener("click", toggleSelect);
+  instrumentSelect.addEventListener("touchstart", toggleSelect, { passive: false });
 
   document.getElementById("generateBtn").addEventListener("click", generatePrompt);
   document.getElementById("copyBtn").addEventListener("click", copyPrompt);
