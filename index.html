@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUNO Prompt Generator</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Orbitron', sans-serif; }
+    select, input, textarea {
+      background-color: #0d0d1a;
+      color: #a2e8ff;
+      border-color: #00e0ff;
+    }
+    select option {
+      background-color: #0d0d1a;
+      color: #a2e8ff;
+    }
+    select option:checked {
+      background-color: #00e0ff;
+      color: #0d0d1a;
+    }
+    input::placeholder {
+      color: #74cfe6;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] p-4 text-white">
+  <div class="w-full max-w-lg bg-[#1a1a2e]/80 backdrop-blur-sm border-2 border-cyan-400 rounded-xl p-6 shadow-[0_0_25px_rgba(0,255,255,0.5)]">
+    <img src="hero.jpg" alt="Music Illustration" class="w-full rounded mb-4" />
+    <h1 class="text-xl sm:text-2xl font-bold mb-4 text-center">SUNO Prompt Generator</h1>
+
+    <div class="space-y-4">
+      <!-- 音楽ジャンル -->
+      <div>
+        <label for="music" class="block font-medium mb-1">音楽ジャンル</label>
+        <select id="music" class="w-full border rounded p-2 text-base"></select>
+      </div>
+      <!-- 雰囲気 -->
+      <div>
+        <label for="mood" class="block font-medium mb-1">雰囲気</label>
+        <select id="mood" class="w-full border rounded p-2"></select>
+      </div>
+      <!-- 楽器 -->
+      <div>
+        <label for="instrument" class="block font-medium mb-1">楽器</label>
+        <select id="instrument" class="w-full border rounded p-2" multiple size="6"></select>
+      </div>
+      <!-- BPM -->
+      <div>
+        <label for="bpm" class="block font-medium mb-1">BPM</label>
+        <input type="number" id="bpm" placeholder="例: 120" class="w-full border rounded p-2" inputmode="numeric" pattern="[0-9]*" />
+      </div>
+      <!-- ボーカル -->
+      <div>
+        <label for="vocals" class="block font-medium mb-1">ボーカル</label>
+        <select id="vocals" class="w-full border rounded p-2">
+          <option value="Male vocals">男性ボーカル</option>
+          <option value="Female vocals">女性ボーカル</option>
+          <option value="Instrumental">ボーカルなし</option>
+        </select>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex flex-col sm:flex-row gap-2 justify-end">
+        <button id="randomBtn" class="px-4 py-2 rounded bg-gradient-to-r from-indigo-500 to-fuchsia-600 hover:from-indigo-600 hover:to-fuchsia-700 shadow-[0_0_10px_rgba(139,92,246,0.8)]">Random</button>
+        <button id="generateBtn" class="px-4 py-2 rounded bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 shadow-[0_0_10px_rgba(236,72,153,0.8)]">Generate</button>
+        <button id="copyBtn" class="px-4 py-2 rounded bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 shadow-[0_0_10px_rgba(34,211,238,0.8)]">Copy</button>
+      </div>
+
+      <!-- Output -->
+      <textarea id="output" rows="3" readonly class="w-full border rounded p-2 mt-4" placeholder="Prompt will appear here..."></textarea>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
